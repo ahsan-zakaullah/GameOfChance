@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfChance.API", "GameOfChance.API\GameOfChance.API.csproj", "{33F43E52-20B4-436B-A8CD-3FFDF04DC0B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfChance.Models", "GameOfChance.Models\GameOfChance.Models.csproj", "{63F807D7-5E9D-4B41-ABFE-090FEA7656EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfChance.Common", "GameOfChance.Common\GameOfChance.Common.csproj", "{19F4F032-70B0-407F-A2C1-A7D16E412DCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfChance.Repository", "GameOfChance.Repository\GameOfChance.Repository.csproj", "{76C822FB-5D84-485E-8D23-A02F7B55ABF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfChance.Service", "GameOfChance.Service\GameOfChance.Service.csproj", "{58EF6C43-D5FD-4F9B-B8B0-FA2AA59BF690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfChance.Api.Test.Integration", "GameOfChance.Api.Test.Integration\GameOfChance.Api.Test.Integration.csproj", "{5C13EFBF-3916-4881-B319-6BAA533C3D56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33F43E52-20B4-436B-A8CD-3FFDF04DC0B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F43E52-20B4-436B-A8CD-3FFDF04DC0B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F43E52-20B4-436B-A8CD-3FFDF04DC0B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F43E52-20B4-436B-A8CD-3FFDF04DC0B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F807D7-5E9D-4B41-ABFE-090FEA7656EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F807D7-5E9D-4B41-ABFE-090FEA7656EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F807D7-5E9D-4B41-ABFE-090FEA7656EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F807D7-5E9D-4B41-ABFE-090FEA7656EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F4F032-70B0-407F-A2C1-A7D16E412DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F4F032-70B0-407F-A2C1-A7D16E412DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F4F032-70B0-407F-A2C1-A7D16E412DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F4F032-70B0-407F-A2C1-A7D16E412DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76C822FB-5D84-485E-8D23-A02F7B55ABF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76C822FB-5D84-485E-8D23-A02F7B55ABF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76C822FB-5D84-485E-8D23-A02F7B55ABF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76C822FB-5D84-485E-8D23-A02F7B55ABF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58EF6C43-D5FD-4F9B-B8B0-FA2AA59BF690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58EF6C43-D5FD-4F9B-B8B0-FA2AA59BF690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58EF6C43-D5FD-4F9B-B8B0-FA2AA59BF690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58EF6C43-D5FD-4F9B-B8B0-FA2AA59BF690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C13EFBF-3916-4881-B319-6BAA533C3D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C13EFBF-3916-4881-B319-6BAA533C3D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C13EFBF-3916-4881-B319-6BAA533C3D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C13EFBF-3916-4881-B319-6BAA533C3D56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8624EA1-FD8A-4DBD-A4B5-E16176A2981E}
+	EndGlobalSection
+EndGlobal
