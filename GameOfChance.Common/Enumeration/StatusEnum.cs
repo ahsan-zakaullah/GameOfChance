@@ -1,4 +1,4 @@
-﻿namespace GameOfChance.Common.Enumeration
+﻿namespace GameOfChance.Common
 {
     public enum StatusEnum : short
     {

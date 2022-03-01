@@ -1,8 +1,8 @@
-﻿namespace GameOfChance.Models.RequestModels
+﻿namespace GameOfChance.Models
 {
-    public class BetRequest
+    public class BetRequest : BaseRequest
     {
         public int Points { get; set; }
-        public int number { get; set; }
+        public int Number { get; set; }
     }
 }

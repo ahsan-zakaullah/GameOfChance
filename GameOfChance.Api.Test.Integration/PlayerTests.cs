@@ -1,6 +1,6 @@
-using AutoFixture;
 using GameOfChance.Api.Test.Integration.Infrastructure;
-using GameOfChance.Models.RequestModels;
+using GameOfChance.Models;
+using System.Net;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -12,66 +12,29 @@ namespace GameOfChance.Api.Test.Integration
         {
         }
 
+        //NOTE: I am just writing the Unit test to verify the functionality of the endpoint as supposed that the endpoint is authorized.
+        // Omitting the Unit tests for authentication and authorization.
+        // Here we can call all the other endpoint(Get, ById or Save etc) to verify the behaviour 
+
         [Fact]
-        public async void VerifyTheControllerEndPoint_ItShouldReturn_OkResponse()
+        public async void VerifyTheControllerEndPointWithOutToken_ItShouldReturn_Unauthorized()
         {
             //Setup
-            var fixture = new Fixture();
             var betRequest = new BetRequest
             {
                 Points = 100,
-                number = 3
+                Number = 3
             };
             var getPlayerRequest = NewRequest
-                     .AddRoute("Player/PlayerStatusByBet");
+
+                .AddRoute("api/Player/PlayerStatusByBet");
 
             // Exercise
             var result = await getPlayerRequest.Post(betRequest);
             // Verify
-            // Need to verify the result should not be null
-            Assert.NotNull(result);
+            Assert.Equal(HttpStatusCode.Unauthorized, result.StatusCode);
 
         }
 
-        [Fact]
-        public async void VerifyThePlayerPoint_ItShouldBeMultipleByNine_IfStatusIsSuccess()
-        {
-            //Setup
-            var fixture = new Fixture();
-            var betRequest = new BetRequest
-            {
-                Points = 100,
-                number = 3
-            };
-            var getPlayerRequest = NewRequest
-                     .AddRoute("Player/PlayerStatusByBet");
-
-            // Exercise
-            var result = await getPlayerRequest.Post(betRequest);
-            // Verify
-
-            // Need to verify the result should not be null
-            Assert.NotNull(result);
-        }
-
-        [Fact]
-        public async void VerifyThePlayerAccount_ItShouldBeGreaterThan10000_InAnyCase()
-        {
-            //Setup
-            var fixture = new Fixture();
-            var betRequest = new BetRequest
-            {
-                Points = 100,
-                number = 3
-            };
-            var getPlayerRequest = NewRequest
-                     .AddRoute("Player/PlayerStatusByBet");
-
-            // Exercise
-            var result = await getPlayerRequest.Post(betRequest);
-            // Verify
-            // Need to verify the result should not be null
-            Assert.NotNull(result);
-        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace GameOfChance.Models.CommonModels
+namespace GameOfChance.Models
 {
     public class ErrorDetails
     {

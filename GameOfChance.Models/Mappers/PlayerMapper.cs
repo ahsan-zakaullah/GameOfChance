@@ -1,25 +1,23 @@
 ﻿using GameOfChance.Common;
-using GameOfChance.Common.Enumeration;
-using GameOfChance.Models.DomainModels;
-using GameOfChance.Models.RequestModels;
-using GameOfChance.Models.ResponseModels;
 
-namespace GameOfChance.Models.Mappers
+namespace GameOfChance.Models
 {
     public static class PlayerMapper
     {
-        public static Player Map(this BetRequest source, int accountBalance = 0, bool isSuccess = false)
+        public static PlayerAccount Map(this BetRequest source, int accountBalance = 0, bool isSuccess = false)
         {
-            return new Player
+            Guid.TryParse(source.CreatedBy, out Guid result);
+            return new PlayerAccount
             {
                 Account = accountBalance,
                 Points = source.Points,
                 Status = isSuccess ? ((short)StatusEnum.Won) : ((short)StatusEnum.Lost),
-                CreatedDate = DateTime.UtcNow
+                CreatedDate = source.CreatedDate,
+                CreatedBy = result
             };
 
         }
-        public static BetResponse Map(this Player source)
+        public static BetResponse Map(this PlayerAccount source)
         {
             return new BetResponse
             {

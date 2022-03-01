@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using GameOfChance.Models.CommonModels;
+using GameOfChance.Models;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace GameOfChance.Api.Middlewares

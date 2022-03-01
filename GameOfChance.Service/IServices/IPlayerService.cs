@@ -1,5 +1,4 @@
-﻿using GameOfChance.Models.RequestModels;
-using GameOfChance.Models.ResponseModels;
+﻿using GameOfChance.Models;
 
 namespace GameOfChance.Service.IServices
 {

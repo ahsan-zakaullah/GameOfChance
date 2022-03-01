@@ -1,10 +1,10 @@
-﻿using GameOfChance.Models.DomainModels;
+﻿using GameOfChance.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GameOfChance.Repository.DbContexts.PlayerDbContext
 {
     public interface IPlayerDbContext : IDbContext
     {
-        DbSet<Player> Players { get; set; }
+        DbSet<PlayerAccount> Players { get; set; }
     }
 }

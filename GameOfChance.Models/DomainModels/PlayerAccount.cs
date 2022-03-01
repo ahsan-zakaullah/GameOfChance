@@ -1,8 +1,6 @@
-﻿using GameOfChance.Models.CommonModels;
-
-namespace GameOfChance.Models.DomainModels
+﻿namespace GameOfChance.Models
 {
-    public class Player : BaseModel
+    public class PlayerAccount : BaseModel
     {
         public int Account { get; set; }
         public short Status { get; set; }

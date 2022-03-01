@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using GameOfChance.Models.RequestModels;
+using GameOfChance.Models;
 
 namespace GameOfChance.API.Validators
 {
@@ -7,8 +7,8 @@ namespace GameOfChance.API.Validators
     {
         public BetRequestValidator()
         {
-            RuleFor(x => x.number).NotEmpty().WithMessage("Password and Confirm Password do not match");
-            RuleFor(x => x.Points).NotEmpty().WithMessage("Password and Confirm Password do not match");
+            RuleFor(x => x.Number).NotEmpty().WithMessage("Number field should not be empty");
+            RuleFor(x => x.Points).NotEmpty().WithMessage("Points should not be empty");
         }
     }
 }

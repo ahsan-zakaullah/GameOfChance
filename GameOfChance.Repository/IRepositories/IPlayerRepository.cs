@@ -1,8 +1,8 @@
-﻿using GameOfChance.Models.DomainModels;
+﻿using GameOfChance.Models;
 
 namespace GameOfChance.Repository.IRepositories
 {
-    public interface IPlayerRepository : IGenericRepository<Player>
+    public interface IPlayerRepository : IGenericRepository<PlayerAccount>
     {
     }
 }

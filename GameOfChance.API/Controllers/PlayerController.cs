@@ -1,12 +1,11 @@
-﻿using GameOfChance.Models.RequestModels;
+﻿using GameOfChance.Models;
 using GameOfChance.Service.IServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameOfChance.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class PlayerController : ControllerBase
+    [Route("api/[controller]"), ApiController]
+    public class PlayerController : BaseController
     {
         private readonly IPlayerService _playerService;
 
@@ -14,9 +13,10 @@ namespace GameOfChance.API.Controllers
         {
             _playerService = playerService;
         }
-        [HttpGet("PlayerStatusByBet")]
-        public IActionResult PlayerStatusByBet([FromQuery] BetRequest betRequest)
+        [HttpPost("PlayerStatusByBet")]
+        public IActionResult PlayerStatusByBet([FromBody] BetRequest betRequest)
         {
+            SetNewValues(betRequest);
             var result = _playerService.PlayerBetResponse(betRequest);
             if (result == null)
                 return BadRequest();

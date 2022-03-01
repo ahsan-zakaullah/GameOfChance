@@ -6,7 +6,7 @@ using GameOfChance.Api.Test.Integration.Extensions;
 namespace GameOfChance.Api.Test.Integration.Utilities
 {
     // Writing the generic request builder for all HTTP verbs. 
-    // Currently i am only using the GET request.
+    // Currently i am only using the POST request.
     public class RequestBuilder
     {
         private readonly HttpClient _httpClient;
@@ -25,7 +25,6 @@ namespace GameOfChance.Api.Test.Integration.Utilities
 
             return this;
         }
-
         public RequestBuilder AddQueryParams(string key, string value)
         {
             _queryParamBuilder.Add(key, value);
@@ -53,7 +52,7 @@ namespace GameOfChance.Api.Test.Integration.Utilities
         private static void ThrowIfError(HttpResponseMessage message)
         {
 
-            if (message.IsSuccessStatusCode == false)
+            if (message.IsSuccessStatusCode == false && !message.StatusCode.Equals(System.Net.HttpStatusCode.Unauthorized))
             {
                 var responseContent = message.Content.ReadAsStringAsync().Result;
                 throw new HttpRequestException($"Could not make {message.RequestMessage?.Method.ToString() ?? "UNKNOWN METHOD"} Request.\n{responseContent}");
@@ -65,13 +64,11 @@ namespace GameOfChance.Api.Test.Integration.Utilities
             if (throwOnError) ThrowIfError(response);
             return await response.DeserializeContent<T>();
         }
-        // NOTE: I am going deserialize the result of post request as well because i need to verify the test cases based on given bet request.
-        // Normally we can return the HTTP response and verify either it is successful or not.
-        public async Task<T> Post<T>(T content, bool throwOnError = true) where T : class
+        public async Task<HttpResponseMessage> Post<T>(T content, bool throwOnError = true) where T : class
         {
             var response = await _httpClient.PostAsync(BuildUrl(), ToStringContent(content));
             if (throwOnError) ThrowIfError(response);
-            return await response.DeserializeContent<T>();
+            return response;
         }
         public async Task<HttpResponseMessage> Post(bool throwOnError = true)
         {

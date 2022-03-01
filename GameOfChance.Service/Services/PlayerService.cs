@@ -1,8 +1,5 @@
 ﻿using GameOfChance.Common;
-using GameOfChance.Models.DomainModels;
-using GameOfChance.Models.Mappers;
-using GameOfChance.Models.RequestModels;
-using GameOfChance.Models.ResponseModels;
+using GameOfChance.Models;
 using GameOfChance.Repository.IRepositories;
 using GameOfChance.Service.IServices;
 
@@ -15,14 +12,15 @@ namespace GameOfChance.Service.Services
         {
             _playerRepository = playerRepository;
         }
+
         public async Task<BetResponse> PlayerBetResponse(BetRequest betRequest)
         {
             // Generate the random numbers
 
             var random = new Random();
             int randomItemNumber = random.Next(0, 10);
-            Player? domainModel;
-            if (randomItemNumber == betRequest.number)
+            PlayerAccount? domainModel;
+            if (randomItemNumber == betRequest.Number)
             {
                 // Get the starting account value
                 // If number matched then return the multiple of 9

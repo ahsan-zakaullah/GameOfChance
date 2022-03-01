@@ -1,4 +1,4 @@
-﻿namespace GameOfChance.Models.ResponseModels
+﻿namespace GameOfChance.Models
 {
     public class BetResponse
     {

@@ -1,12 +1,11 @@
-﻿using System.Reflection;
-using Microsoft.OpenApi.Any;
+﻿using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
-namespace GameOfChance.Api.Filters
+namespace GameOfChance.API.Filters
 {
-    // Just for referencing implement the Schema filter to assign some default values to the request models.
-    public class SearchFilters : ISchemaFilter
+    public class UserRegisterFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
@@ -18,10 +17,11 @@ namespace GameOfChance.Api.Filters
             // setting the default values for request model.
             return type.Name switch
             {
-                "BetRequest" => new OpenApiObject
+                "UserRegisterRequest" => new OpenApiObject
                 {
-                    ["Points"] = new OpenApiString("100"),
-                    ["Number"] = new OpenApiString("3")
+                    ["Username"] = new OpenApiString("demo"),
+                    ["Email"] = new OpenApiString("demo@email.com"),
+                    ["Password"] = new OpenApiString("P@$$w0rd")
                 },
                 _ => null
             };
