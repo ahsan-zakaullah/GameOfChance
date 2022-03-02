@@ -60,7 +60,7 @@ namespace GameOfChance.API.Controllers
                 });
             }
 
-            return NotFound();
+            return NotFound("Username or password incorrect.");
         }
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
