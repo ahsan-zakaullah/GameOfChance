@@ -60,7 +60,7 @@ namespace GameOfChance.API.Controllers
                 });
             }
 
-            return Unauthorized();
+            return NotFound();
         }
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
