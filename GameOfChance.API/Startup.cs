@@ -1,11 +1,14 @@
 ﻿using GameOfChance.Api.Filters;
 using GameOfChance.Api.Middlewares;
 using GameOfChance.API.Extensions;
+using GameOfChance.Repository.DbContexts.PlayerDbContext;
 using GameOfChance.Repository.IRepositories;
 using GameOfChance.Repository.Repositories;
 using GameOfChance.Service.IServices;
 using GameOfChance.Service.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace GameOfChance.API
 {
@@ -71,6 +74,7 @@ namespace GameOfChance.API
         {
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<IUserService, UserService>();
+            //services.AddTransient<IStartupFilter, MigrationStartupFilter<IPlayerDbContext>>();
         }
 
         private void RegisterRepositories(IServiceCollection services)
@@ -80,8 +84,16 @@ namespace GameOfChance.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IServiceProvider serviceProvider, IWebHostEnvironment env)
         {
+            var db = serviceProvider.GetRequiredService<IPlayerDbContext>();
+            // Check is any migration is pending to make impact on database
+            if (db != null && db.Database.GetPendingMigrations().Any())
+            {
+                db.Database.Migrate();
+            }
+
+            db?.Database.EnsureCreated();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -106,4 +118,22 @@ namespace GameOfChance.API
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Players v1"));
         }
     }
+    //public class MigrationStartupFilter<TContext> : IStartupFilter where TContext : IPlayerDbContext
+    //{
+    //    public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
+    //    {
+    //        return app =>
+    //        {
+    //            using (var scope = app.ApplicationServices.CreateScope())
+    //            {
+    //                foreach (var context in scope.ServiceProvider.GetServices<TContext>())
+    //                {
+    //                    context.Database.SetCommandTimeout(160);
+    //                    context.Database.Migrate();
+    //                }
+    //            }
+    //            next(app);
+    //        };
+    //    }
+    //}
 }

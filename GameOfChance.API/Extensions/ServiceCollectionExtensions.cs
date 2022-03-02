@@ -28,6 +28,7 @@ namespace GameOfChance.API.Extensions
                     optionsBuilder.MigrationsAssembly(migrationsAssembly);
                     optionsBuilder.EnableRetryOnFailure(15, TimeSpan.FromSeconds(30), null);
                 }));
+
         }
 
         public static void AddIdentityAndJWT(this IServiceCollection services, IConfiguration configuration)

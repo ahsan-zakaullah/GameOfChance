@@ -12,7 +12,7 @@ namespace GameOfChance.Api.Test.Integration
         {
         }
 
-        //NOTE: I am just writing the Unit test to verify the functionality of the endpoint as supposed that the endpoint is authorized.
+        // NOTE: I am just writing the Unit test to verify the functionality of the endpoint as supposed that the endpoint is authorized.
         // Omitting the Unit tests for authentication and authorization.
         // Here we can call all the other endpoint(Get, ById or Save etc) to verify the behaviour 
 

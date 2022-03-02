@@ -1,4 +1,6 @@
-﻿using GameOfChance.API.Extensions;
+﻿using GameOfChance.API.ActionFilters;
+using GameOfChance.API.Extensions;
+using GameOfChance.API.Validators;
 using GameOfChance.Common;
 using GameOfChance.Models;
 using GameOfChance.Service.IServices;
@@ -23,7 +25,7 @@ namespace GameOfChance.API.Controllers
             _configuration = configuration;
         }
         [HttpPost]
-        [Route("register")]
+        [Route("register"), ValidateModel("model", typeof(UserRegisterValidator))]
         public async Task<IActionResult> Register([FromBody] UserRegisterRequest model)
         {
             var userExists = await _userService.FindByNameAsync(model.Username);
@@ -42,7 +44,7 @@ namespace GameOfChance.API.Controllers
 
         }
         [HttpPost]
-        [Route("login")]
+        [Route("login"), ValidateModel("model", typeof(LoginRequestValidator))]
         public async Task<IActionResult> Login([FromBody] LoginRequest model)
         {
             var user = await _userService.FindByNameAsync(model.Username);

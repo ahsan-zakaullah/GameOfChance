@@ -1,4 +1,6 @@
-﻿using GameOfChance.Models;
+﻿using GameOfChance.API.ActionFilters;
+using GameOfChance.API.Validators;
+using GameOfChance.Models;
 using GameOfChance.Service.IServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +15,11 @@ namespace GameOfChance.API.Controllers
         {
             _playerService = playerService;
         }
-        [HttpPost("PlayerStatusByBet")]
-        public IActionResult PlayerStatusByBet([FromBody] BetRequest betRequest)
+        [HttpPost("PlayerStatusByBet"), ValidateModel("betRequest", typeof(BetRequestValidator))]
+        public async Task<IActionResult> PlayerStatusByBet([FromBody] BetRequest betRequest)
         {
             SetNewValues(betRequest);
-            var result = _playerService.PlayerBetResponse(betRequest);
+            var result = await _playerService.PlayerBetResponse(betRequest);
             if (result == null)
                 return BadRequest();
             return Ok(result);
