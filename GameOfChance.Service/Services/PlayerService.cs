@@ -33,11 +33,13 @@ namespace GameOfChance.Service.Services
             {
                 // Player will have the Minimum 10,000 account balance at any case.
                 // Should we minus the points in case of lost from the minimum account balance?
+                // We can get the record based on the requested ID and can calculate the account balance as well. All the methods written(Get, Update etc)
                 var accountBalance = Constants.MinAccountBalance;
                 domainModel = betRequest.Map(accountBalance, false);
             }
             // TODO: Here we can also apply the check either the same player already exists in the system or not?
             // For now Inersting the record everytime to consider as new request.
+
             await _playerRepository.Insert(domainModel);
             return domainModel.Map();
         }
